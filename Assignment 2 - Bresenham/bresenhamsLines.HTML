@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="bresenhamsLines.js"> </script>
+
+</head>
+<body>
+<h1>Bresenham's Line</h1>
+
+<script>
+var canvas1 = new Bresenham(300, 300);
+
+canvas1.Redisplay();
+</script>
+
+<p>
+X1:
+<input
+      type="text" 
+      maxLength = "3"
+      size = "3"
+      id="x1", onchange="canvas1.SetVar('x1')">
+Y1:
+<input
+      type="text" 
+      maxLength = "3"
+      size = "3"
+      id="y1", onchange="canvas1.SetVar('y1')">
+<p>
+X2:
+<input
+      type="text" 
+      maxLength = "3"
+      size = "3"
+      id="x2", onchange="canvas1.SetVar('x2')">
+Y2:
+<input
+      type="text" 
+      maxLength = "3"
+      size = "3"
+      id="y2", onchange="canvas1.SetVar('y2')">
+<p>
+
+<p>
+<button type="button" id="Redraw" onclick="canvas1.Redisplay()">Redraw</button>
+</pre>

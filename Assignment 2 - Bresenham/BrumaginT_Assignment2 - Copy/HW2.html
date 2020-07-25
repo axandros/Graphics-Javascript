@@ -1,0 +1,99 @@
+<head>
+<title>Bresenham's Line Algorithm</title>
+<script type="text/javascript" src="dragon.js"></script>
+<script type="text/javascript" src="LineTests.js"></script>
+<script type="text/javascript" src="Canvas.js"></script>
+
+</head>
+
+<body>
+<h1>Simple proof tests of the Bresenham Line Algorithm</h1>
+Tristan Brumagin<br>
+CSCI 330 - HW #2
+<br>
+<canvas id='canvas' height = '500' width = '500' style="border:1px solid #000000;"></canvas>
+<script>
+   canvas = new Canvas();
+   canvas.Clear();
+   LineTest(canvas);
+   canvas.Redisplay();
+
+function DoDisplay(value) {
+   canvas.Clear();
+   switch (value) {
+      case '0':
+         LineTest(canvas); 
+	 break;
+      case '1':
+         DrawIt(canvas);
+	 break;
+      case '2':
+         Circle(canvas);
+	 break;
+      case '3':
+         Dragon(canvas);
+	 break;
+      default:
+   }
+   canvas.Redisplay();
+   return;
+}
+
+
+</script>
+<p>
+<select onchange="DoDisplay(this.value)">
+    <option value="0">Line Test</option>
+    <option value="1">Data Test</option>
+    <option value="2">Circle</option>
+    <option value="3">Dragon</option>
+</select>
+
+<p>
+<h3>Problems Encountered</h3>
+The vast majority of the problem in this assignment was in the mathematics, and then translating the results to code.  
+After that, it became a canvas issue, since I performed  the math assuming the origin to be (x1, y1), when the origin is in the top-left corner of the canvas.
+The ability to quickly and easily reference previous qork on the Bresenham algorithm was incredibly important.  Even flipping through pages took too long, and the use of a white board became neccessary to keep track of the work done.
+
+<br>
+
+<h3>Interesting Techniques Employed</h3>
+I ended up with a lot of 45 degree and straight lines while trying to get the Bresenham implemented lines to work.  
+These problems became much easier to solve by logging the A and B values into the console and following the algorithms by hand.  
+This is how I discovered that I had performed the math assuming the graphing usues mentioned above.  
+My implementation of Bresenham doesn't do anything special or interesting.
+<br>
+
+<h3>Sources of Information</h3>
+While websites were referenced for this project, none were especially helpful.  
+There are one hundred and one different derivations for the first octant, but information beyiond that proved scarce.  
+www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html was probably the biggest source of help, and it was mostly a push to derive the full thing myself. <br>
+Special thanks to w3schools.com for informatino on html.
+<br>
+
+<h3>Collaborators</h3>
+The three whiteboards in the common area.
+<br>
+
+<h3>Notes on Additions</h3>
+No additions were added to this program.
+<br>
+
+<h3>Screenshots of Interesting Results</h3>
+Initially, attempts to implement Bresenham's lead to some roundabout ways of imlpementing horizontal, vertical, and diagonal lines. <br>
+<img src="BadLines.png" alt="Bad Lines">
+<br>
+
+I screwed up my percentages in the original implementation of linear color interpolation.  
+The below graphic is supposed to transition from red to orange. <br>
+<img src="BadColor.png" alt="Bad Colors">
+<br>
+
+<h2>Derivation of Bresenham's Line Algorithm</h2>
+<p> While the included images do not include the full derivation for Bresenham's, I was able to interpet the patterns between the octants 1 and 8 (the X Major, x1 &lt x2) octants in order to extrapolate the patterns between octants 2 and 7 (Y major, y1 &lt y2).  
+Again, problems arose since these assume (x1, y1) at origin, ignoring the orientation of the html5 canvas.  The remaining four octants simply exchanged (x1, y1) and (x2, y2) values in order to ensure the algorithm would always draw within these four 'proofed' octants. </p>
+<img src="Octant1.jpeg" height = "600" width = "800"> <br>
+<img src="Octant8.jpeg" height = "600" width = "800"> <br>
+<img src="Octant2.jpeg" height = "600" width = "800"> <br>
+
+</body>
